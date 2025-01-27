@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Uncommon HTML Bug</title>
+</head>
+<body>
+  <div id="myDiv">
+    This text is initially visible.
+  </div>
+  <button onclick="myFunction()">Click Me</button>
+
+  <script>
+    function myFunction() {
+      document.getElementById("myDiv").innerHTML = ""; // Clears the div
+      document.getElementById("myDiv").style.display = "none"; // Hides the div
+      // The bug is that the div is hidden but then re-added to the DOM, resulting in unexpected behavior.
+      document.getElementById("myDiv").style.display = "block"; // Shows the div again
+      // Additional unexpected behaviors can be observed in this case. 
+      document.getElementById("myDiv").innerHTML = "This text is added after clearing the div."; 
+    }
+  </script>
+</body>
+</html>
